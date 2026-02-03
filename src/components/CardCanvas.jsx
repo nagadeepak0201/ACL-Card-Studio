@@ -10,18 +10,21 @@ const CardCanvas = () => {
     const cardWidth = 500;
     const cardHeight = 315;
 
-    // Dynamically map record data to text elements
+    const currentRecord = records[activeRecord];
+    const isTemplate = !!currentRecord?.template;
+
+    // Dynamically map record data to elements with dataFields
     const recordAwareElements = useMemo(() => {
         return elements.map(el => {
-            if (el.type === 'text' && el.id === '1') { // Assuming el.id '1' is the primary name
-                return { ...el, content: records[activeRecord].name };
-            }
-            if (el.type === 'barcode' && el.id === '2') {
-                return { ...el, content: records[activeRecord].id };
+            if (el.dataField && currentRecord) {
+                const recordValue = currentRecord[el.dataField];
+                if (recordValue !== undefined) {
+                    return { ...el, content: recordValue };
+                }
             }
             return el;
         });
-    }, [elements, activeRecord]);
+    }, [elements, currentRecord]);
 
     return (
         <div className={styles.canvasContainer} style={{ transform: `scale(${zoom})` }}>
@@ -30,8 +33,8 @@ const CardCanvas = () => {
                 style={{ width: cardWidth, height: cardHeight }}
                 onClick={() => setSelectedId(null)}
             >
-                <div className={styles.zebraOverlay} />
-                <div className={styles.colorStripe} style={{ backgroundColor: records[activeRecord].color }} />
+                {!isTemplate && <div className={styles.zebraOverlay} />}
+                {!isTemplate && <div className={styles.colorStripe} style={{ backgroundColor: currentRecord?.color }} />}
 
                 {recordAwareElements.map(el => (
                     <DesignerElement

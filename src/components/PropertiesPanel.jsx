@@ -50,16 +50,60 @@ const PropertiesPanel = () => {
 
             <div className={styles.divider} />
 
+            <div className={styles.section}>
+                <h3> Appearance</h3>
+                <div className={styles.fullInput}>
+                    <label>Fill Color</label>
+                    <div className={styles.colorRow}>
+                        <input
+                            type="color"
+                            className={styles.colorPicker}
+                            value={selectedElement.color || '#1a1a1a'}
+                            onChange={(e) => handleChange('color', e.target.value)}
+                        />
+                        <input
+                            type="text"
+                            className={styles.colorText}
+                            value={selectedElement.color || '#1a1a1a'}
+                            onChange={(e) => handleChange('color', e.target.value)}
+                        />
+                    </div>
+                </div>
+            </div>
+
+            <div className={styles.divider} />
+
+            {(selectedElement.type === 'text' || selectedElement.type === 'barcode') && (
+                <div className={styles.section}>
+                    <h3> Data Binding</h3>
+                    <div className={styles.fullInput}>
+                        <label>Map to Field</label>
+                        <select
+                            className={styles.select}
+                            value={selectedElement.dataField || ''}
+                            onChange={(e) => handleChange('dataField', e.target.value)}
+                        >
+                            <option value="">Static Content</option>
+                            <option value="name">Record Name</option>
+                            <option value="id">Record ID</option>
+                            <option value="color">Record Theme Color</option>
+                        </select>
+                    </div>
+                </div>
+            )}
+
             {selectedElement.type === 'text' && (
                 <div className={styles.section}>
                     <h3><Type size={14} /> Text Settings</h3>
-                    <div className={styles.fullInput}>
-                        <label>Content</label>
-                        <textarea
-                            value={selectedElement.content}
-                            onChange={(e) => handleChange('content', e.target.value)}
-                        />
-                    </div>
+                    {!selectedElement.dataField && (
+                        <div className={styles.fullInput}>
+                            <label>Content</label>
+                            <textarea
+                                value={selectedElement.content}
+                                onChange={(e) => handleChange('content', e.target.value)}
+                            />
+                        </div>
+                    )}
                     <div className={styles.fullInput}>
                         <label>Font Family</label>
                         <select
@@ -81,7 +125,11 @@ const PropertiesPanel = () => {
                     <div className={styles.checkboxRow}>
                         <div className={styles.checkboxGroup}>
                             <label>
-                                <input type="checkbox" checked={selectedElement.bold} onChange={(e) => handleChange('bold', e.target.checked)} />
+                                <input
+                                    type="checkbox"
+                                    checked={selectedElement.bold}
+                                    onChange={(e) => handleChange('bold', e.target.checked)}
+                                />
                                 Bold
                             </label>
                         </div>
@@ -95,7 +143,7 @@ const PropertiesPanel = () => {
                 </div>
             )}
 
-            {selectedElement.type === 'barcode' && (
+            {selectedElement.type === 'barcode' && !selectedElement.dataField && (
                 <div className={styles.section}>
                     <h3><Maximize size={14} /> Barcode Settings</h3>
                     <div className={styles.fullInput}>
