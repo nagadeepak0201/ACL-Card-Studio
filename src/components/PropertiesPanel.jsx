@@ -81,7 +81,7 @@ const PropertiesPanel = () => {
                     <div className={styles.checkboxRow}>
                         <div className={styles.checkboxGroup}>
                             <label>
-                                <input type="checkbox" checked={selectedElement.bold} />
+                                <input type="checkbox" checked={selectedElement.bold} onChange={(e) => handleChange('bold', e.target.checked)} />
                                 Bold
                             </label>
                         </div>
