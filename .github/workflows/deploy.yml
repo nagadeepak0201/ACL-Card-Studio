@@ -1,14 +1,16 @@
-name: Deploy to Windows Server
+name: Build and Deploy to IIS
 
 on:
-  push:
-    branches:
-      - main
+  pull_request:
+    branches: [ "main" ]
+    types: [ closed ]
+  workflow_dispatch:
 
 jobs:
-  build-and-deploy:
+  deploy:
+    if: github.event.pull_request.merged == true || github.event_name == 'workflow_dispatch'
     runs-on: self-hosted
-    
+
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
@@ -17,19 +19,33 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '20'
-          cache: 'npm'
 
       - name: Install Dependencies
-        run: npm ci
+        run: npm install
 
-      - name: Build Application
+      - name: Build Project
         run: npm run build
 
-      - name: Deploy to Target Directory
+      - name: Deploy to IIS
         shell: powershell
         run: |
-          $targetDir = "C:\inetpub\wwwroot\acl-studio"
-          if (!(Test-Path $targetDir)) {
-            New-Item -ItemType Directory -Force -Path $targetDir
+          # Define source and destination
+          $sourcePath = "dist"
+          $destPath = "D:\Users\Cookies\Selvakumar\ACL_Studio" # Updated path
+
+          # Create directory if it doesn't exist
+          if (-not (Test-Path $destPath)) {
+              New-Item -ItemType Directory -Force -Path $destPath
           }
-          Copy-Item -Path "dist\*" -Destination $targetDir -Recurse -Force
+
+          # Copy files from dist to destination
+          # Using Robocopy for efficiency (ignores errors with /R:0 /W:0)
+          robocopy $sourcePath $destPath /MIR /MT /R:0 /W:0
+
+          if ($LASTEXITCODE -lt 8) {
+              Write-Host "Robocopy completed successfully with exit code $LASTEXITCODE"
+              exit 0
+          } else {
+              Write-Error "Robocopy failed with exit code $LASTEXITCODE"
+              exit $LASTEXITCODE
+          }
