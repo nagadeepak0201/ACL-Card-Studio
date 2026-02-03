@@ -26,7 +26,7 @@ const MainLayout = ({ children }) => {
                     >
                         ACL
                     </motion.div>
-                    <span className={styles.logoText}>Studio <span className={styles.version}>PRO v1.0</span></span>
+                    <span className={styles.logoText}>Card Studio <span className={styles.version}>PRO v1.0</span></span>
                 </div>
                 <nav className={styles.nav}>
                     <button>File</button>

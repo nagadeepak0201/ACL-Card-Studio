@@ -4,7 +4,7 @@ const DesignerContext = createContext();
 
 export const records = [
   { id: 'REC-101', name: 'John Cena', color: '#10b981' }, // Green
-  { id: 'REC-102', name: 'Susan Long', color: '#6366f1' },    // Indigo
+  { id: 'REC-102', name: 'Susan Long', color: '#64748b' },    // Grey
   { id: 'REC-103', name: 'Timothy Jones', color: '#fbbf24' },  // Yellow
   { id: 'REC-104', name: 'Joana Myers', color: '#ec4899' },    // Pink
   { id: 'REC-105', name: 'Marie Henderson', color: '#ef4444' } // Red
