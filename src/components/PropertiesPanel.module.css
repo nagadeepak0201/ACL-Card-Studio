@@ -1,0 +1,151 @@
+.panel {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding: 16px;
+    gap: 20px;
+}
+
+.emptyState {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    padding: 40px;
+    text-align: center;
+    color: var(--text-secondary);
+    font-size: 13px;
+}
+
+.infoIcon {
+    width: 24px;
+    height: 24px;
+    border: 1px solid var(--text-secondary);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 12px;
+    font-weight: bold;
+}
+
+.section h3 {
+    font-size: 12px;
+    text-transform: uppercase;
+    color: var(--accent-primary);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 12px;
+    letter-spacing: 0.5px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+.inputGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.inputGroup label {
+    font-size: 11px;
+    color: var(--text-secondary);
+}
+
+.inputGroup input {
+    background: var(--bg-main);
+    border: 1px solid var(--glass-border);
+    color: white;
+    padding: 6px 8px;
+    border-radius: 4px;
+    font-size: 13px;
+}
+
+.fullInput {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-bottom: 12px;
+}
+
+.fullInput label {
+    font-size: 11px;
+    color: var(--text-secondary);
+}
+
+.fullInput input,
+.fullInput textarea,
+.fullInput select {
+    background: var(--bg-main);
+    border: 1px solid var(--glass-border);
+    color: white;
+    padding: 8px;
+    border-radius: 4px;
+    font-size: 13px;
+    width: 100%;
+}
+
+.select option {
+    background: var(--bg-surface);
+}
+
+.fullInput textarea {
+    min-height: 60px;
+    resize: vertical;
+}
+
+.checkboxRow {
+    display: flex;
+    gap: 12px;
+    align-items: flex-end;
+}
+
+.checkboxGroup {
+    display: flex;
+    align-items: center;
+}
+
+.checkboxGroup label {
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.divider {
+    height: 1px;
+    background: var(--border-color);
+}
+
+.spacer {
+    flex: 1;
+}
+
+.deleteBtn {
+    background: rgba(239, 68, 68, 0.1);
+    border: 1px solid rgba(239, 68, 68, 0.2);
+    color: #ef4444;
+    padding: 10px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-weight: 600;
+    font-size: 13px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.deleteBtn:hover {
+    background: #ef4444;
+    color: white;
+}

@@ -1,0 +1,350 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    background-color: var(--bg-main);
+    color: var(--text-primary);
+}
+
+.header {
+    height: 48px;
+    background-color: #0f172a;
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    border-bottom: 1px solid var(--border-color);
+    gap: 32px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.logoMark {
+    background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+    color: white;
+    font-weight: 900;
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-size: 14px;
+    letter-spacing: 1px;
+    box-shadow: 0 0 15px rgba(99, 102, 241, 0.4);
+}
+
+.logoText {
+    font-weight: 700;
+    font-size: 16px;
+    letter-spacing: -0.5px;
+}
+
+.version {
+    font-size: 10px;
+    font-weight: 500;
+    color: var(--accent-secondary);
+    text-transform: uppercase;
+    margin-left: 4px;
+}
+
+.nav {
+    display: flex;
+    gap: 8px;
+}
+
+.nav button {
+    background: none;
+    border: none;
+    color: var(--text-secondary);
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    padding: 6px 12px;
+    border-radius: 6px;
+    transition: all 0.2s;
+}
+
+.nav button:hover {
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--text-primary);
+}
+
+.userProfile {
+    margin-left: auto;
+    display: flex;
+    gap: 12px;
+}
+
+.iconBtn {
+    background: none;
+    border: none;
+    color: var(--text-secondary);
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.iconBtn:hover {
+    background: var(--bg-surface);
+    color: var(--text-primary);
+}
+
+/* Toolbar */
+.toolbar {
+    height: 56px;
+    background-color: #1e293b;
+    display: flex;
+    align-items: center;
+    padding: 0 16px;
+    border-bottom: 1px solid var(--border-color);
+    gap: 12px;
+}
+
+.toolGroup {
+    display: flex;
+    gap: 6px;
+}
+
+.toolBtn {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--glass-border);
+    color: var(--text-secondary);
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.toolBtn:hover {
+    background: var(--bg-surface);
+    color: var(--accent-primary);
+    border-color: var(--accent-primary);
+    box-shadow: 0 0 10px rgba(99, 102, 241, 0.2);
+}
+
+.divider {
+    width: 1px;
+    height: 28px;
+    background-color: var(--border-color);
+    margin: 0 6px;
+}
+
+.zoomControls {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-primary);
+    background: #0f172a;
+    padding: 6px 16px;
+    border-radius: 30px;
+    border: 1px solid var(--border-color);
+}
+
+.zoomControls button {
+    background: none;
+    border: none;
+    color: var(--accent-primary);
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.spacer {
+    flex: 1;
+}
+
+/* Main Content Area */
+.mainContent {
+    display: flex;
+    flex: 1;
+    overflow: hidden;
+}
+
+.sidebar {
+    width: 60px;
+    background-color: #1e293b;
+    border-right: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 16px 0;
+    gap: 12px;
+}
+
+.sidebarBtn {
+    width: 42px;
+    height: 42px;
+    border: 1px solid transparent;
+    background: none;
+    color: var(--text-secondary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.sidebarBtn[active="true"] {
+    background: var(--accent-primary);
+    color: white;
+    box-shadow: var(--selection-glow);
+}
+
+.sidebarBtn:hover:not([active="true"]) {
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--text-primary);
+}
+
+.workspace {
+    flex: 1;
+    background-color: #0f172a;
+    background-image: radial-gradient(circle at 50% 50%, #1e293b 0%, #0f172a 100%);
+    position: relative;
+    overflow: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.workspaceInner {
+    padding: 100px;
+}
+
+.properties {
+    width: 300px;
+    background-color: #1e293b;
+    border-left: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+}
+
+.panelHeader {
+    padding: 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 700;
+    font-size: 14px;
+    border-bottom: 1px solid var(--border-color);
+    background: #111827;
+}
+
+.accordion {
+    flex: 1;
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.accordionItem {}
+
+.accordionLabel {
+    padding: 12px;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid var(--glass-border);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.accordionLabel:hover {
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--text-primary);
+}
+
+/* Footer Database Strip */
+.footer {
+    height: 160px;
+    background-color: #1e293b;
+    border-top: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+}
+
+.databaseBar {
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    font-weight: 700;
+    background: #111827;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.plusIcon {
+    margin-left: 8px;
+    color: var(--accent-success);
+    cursor: pointer;
+}
+
+.toggleBtn {
+    margin-left: auto;
+    background: none;
+    border: none;
+    color: var(--text-secondary);
+    cursor: pointer;
+}
+
+.recordStrip {
+    flex: 1;
+    padding: 16px 20px;
+    display: flex;
+    gap: 24px;
+    overflow-x: auto;
+}
+
+.recordThumb {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    align-items: center;
+    cursor: pointer;
+}
+
+.thumbCard {
+    width: 120px;
+    height: 76px;
+    background: white;
+    border-radius: 6px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+    position: relative;
+    overflow: hidden;
+}
+
+.thumbStripe {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 15px;
+    opacity: 0.8;
+}
+
+.recordThumb span {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--text-secondary);
+}
