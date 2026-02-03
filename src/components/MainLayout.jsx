@@ -3,14 +3,18 @@ import { motion } from 'framer-motion';
 import {
     Square, Type, Image as ImageIcon, Barcode, MousePointer2,
     Layers, Database, Sliders, ChevronDown, Save, Printer,
-    Search, User, PlusCircle
+    Search, User, PlusCircle, Undo2, Redo2, Circle
 } from 'lucide-react';
 import { useDesigner } from '../context/DesignerContext';
 import PropertiesPanel from './PropertiesPanel';
+import LayersPanel from './LayersPanel';
 import styles from './MainLayout.module.css';
 
 const MainLayout = ({ children }) => {
-    const { addElement, zoom, setZoom, activeRecord, setActiveRecord, records, saveDesign, printDesign } = useDesigner(); // Added 'records' here
+    const {
+        addElement, zoom, setZoom, activeRecord, setActiveRecord,
+        records, saveDesign, printDesign, undo, redo, canUndo, canRedo
+    } = useDesigner();
 
     // Removed local records definition as per instruction
 
@@ -48,6 +52,11 @@ const MainLayout = ({ children }) => {
                     <button className={styles.toolBtn} title="Print" onClick={printDesign}><Printer size={18} /></button>
                 </div>
                 <div className={styles.divider} />
+                <div className={styles.toolGroup}>
+                    <button className={styles.toolBtn} title="Undo" onClick={undo} disabled={!canUndo}><Undo2 size={18} /></button>
+                    <button className={styles.toolBtn} title="Redo" onClick={redo} disabled={!canRedo}><Redo2 size={18} /></button>
+                </div>
+                <div className={styles.divider} />
                 <div className={styles.spacer} />
                 <div className={styles.zoomControls}>
                     <button onClick={() => setZoom(z => Math.max(0.2, z - 0.1))}>-</button>
@@ -60,7 +69,8 @@ const MainLayout = ({ children }) => {
                 {/* Left Tools */}
                 <aside className={styles.sidebar}>
                     <button className={styles.sidebarBtn} active="true" title="Select"><MousePointer2 size={20} /></button>
-                    <button className={styles.sidebarBtn} title="Rectangle"><Square size={20} /></button>
+                    <button className={styles.sidebarBtn} title="Rectangle" onClick={() => addElement('rectangle')}><Square size={20} /></button>
+                    <button className={styles.sidebarBtn} title="Circle" onClick={() => addElement('circle')}><Circle size={20} /></button>
                     <button className={styles.sidebarBtn} title="Text" onClick={() => addElement('text')}><Type size={20} /></button>
                     <button className={styles.sidebarBtn} title="Barcode" onClick={() => addElement('barcode')}><Barcode size={20} /></button>
                     <button className={styles.sidebarBtn} title="Image" onClick={() => addElement('image')}><ImageIcon size={20} /></button>
@@ -78,10 +88,20 @@ const MainLayout = ({ children }) => {
                 {/* Right Panel */}
                 <aside className={styles.properties}>
                     <div className={styles.panelHeader}>
+                        <Layers size={16} color="var(--accent-primary)" />
+                        <span>Layers</span>
+                    </div>
+                    <div style={{ maxHeight: '30%', overflowY: 'auto', borderBottom: '1px solid var(--border-color)' }}>
+                        <LayersPanel />
+                    </div>
+
+                    <div className={styles.panelHeader}>
                         <Sliders size={16} color="var(--accent-primary)" />
                         <span>Properties</span>
                     </div>
-                    <PropertiesPanel />
+                    <div style={{ flex: 1, overflowY: 'auto' }}>
+                        <PropertiesPanel />
+                    </div>
                 </aside>
             </div>
 

@@ -10,6 +10,8 @@ const DesignerElement = ({ el, isSelected, onSelect, onUpdate }) => {
         setPos({ x: el.x, y: el.y });
     }, [el.x, el.y]);
 
+    if (el.hidden) return null;
+
     const handleMouseDown = (e) => {
         e.stopPropagation();
 
@@ -56,10 +58,29 @@ const DesignerElement = ({ el, isSelected, onSelect, onUpdate }) => {
                     fontWeight: el.bold ? 'bold' : 'normal',
                     fontStyle: el.italic ? 'italic' : 'normal',
                     fontFamily: el.fontFamily || "'Segoe UI', Roboto, sans-serif",
-                    color: '#1a1a1a',
+                    color: el.color || '#1a1a1a',
+                    whiteSpace: 'nowrap'
                 }}>
                     {el.content}
                 </span>
+            )}
+            {el.type === 'rectangle' && (
+                <div style={{
+                    width: el.width || 100,
+                    height: el.height || 50,
+                    backgroundColor: el.color || '#3b82f6',
+                    borderRadius: el.borderRadius || '4px',
+                    border: el.border || '1px solid rgba(0,0,0,0.1)'
+                }} />
+            )}
+            {el.type === 'circle' && (
+                <div style={{
+                    width: el.width || 80,
+                    height: el.width || 80,
+                    backgroundColor: el.color || '#ef4444',
+                    borderRadius: '50%',
+                    border: '1px solid rgba(0,0,0,0.1)'
+                }} />
             )}
             {el.type === 'barcode' && (
                 <div className={styles.barcodePlaceholder} style={{ width: el.width || 150, height: el.height || 50 }}>

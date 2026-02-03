@@ -359,3 +359,74 @@
     font-weight: 600;
     color: var(--text-secondary);
 }
+
+.layersList {
+    display: flex;
+    flex-direction: column;
+    padding: 8px;
+    gap: 4px;
+}
+
+.layerItem {
+    display: flex;
+    align-items: center;
+    padding: 8px 12px;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid transparent;
+    border-radius: 6px;
+    cursor: pointer;
+    gap: 10px;
+    transition: all 0.2s;
+}
+
+.layerItem:hover {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.selectedLayer {
+    background: rgba(59, 130, 246, 0.1);
+    border-color: rgba(59, 130, 246, 0.3);
+}
+
+.layerGrip {
+    color: var(--text-secondary);
+    opacity: 0.3;
+}
+
+.layerIcon {
+    color: var(--accent-primary);
+    display: flex;
+    align-items: center;
+}
+
+.layerName {
+    flex: 1;
+    font-size: 13px;
+    color: var(--text-primary);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.layerActions {
+    display: flex;
+    gap: 4px;
+}
+
+.layerActionBtn {
+    background: none;
+    border: none;
+    color: var(--text-secondary);
+    padding: 4px;
+    border-radius: 4px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+}
+
+.layerActionBtn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--text-primary);
+}

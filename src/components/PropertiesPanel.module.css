@@ -149,3 +149,22 @@
     background: #ef4444;
     color: white;
 }
+
+.colorRow {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.colorPicker {
+    width: 40px !important;
+    height: 36px;
+    padding: 2px !important;
+    cursor: pointer;
+    background: transparent !important;
+    border: none !important;
+}
+
+.colorText {
+    flex: 1;
+}
