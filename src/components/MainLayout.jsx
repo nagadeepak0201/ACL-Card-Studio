@@ -10,7 +10,7 @@ import PropertiesPanel from './PropertiesPanel';
 import styles from './MainLayout.module.css';
 
 const MainLayout = ({ children }) => {
-    const { addElement, zoom, setZoom, activeRecord, setActiveRecord, records } = useDesigner(); // Added 'records' here
+    const { addElement, zoom, setZoom, activeRecord, setActiveRecord, records, saveDesign, printDesign } = useDesigner(); // Added 'records' here
 
     // Removed local records definition as per instruction
 
@@ -44,15 +44,10 @@ const MainLayout = ({ children }) => {
             {/* Toolbar */}
             <div className={styles.toolbar}>
                 <div className={styles.toolGroup}>
-                    <button className={styles.toolBtn} title="Save"><Save size={18} /></button>
-                    <button className={styles.toolBtn} title="Print"><Printer size={18} /></button>
+                    <button className={styles.toolBtn} title="Save" onClick={saveDesign}><Save size={18} /></button>
+                    <button className={styles.toolBtn} title="Print" onClick={printDesign}><Printer size={18} /></button>
                 </div>
                 <div className={styles.divider} />
-                <div className={styles.toolGroup}>
-                    <motion.button whileTap={{ scale: 0.9 }} className={styles.toolBtn} onClick={() => addElement('text')}><Type size={18} /></motion.button>
-                    <motion.button whileTap={{ scale: 0.9 }} className={styles.toolBtn} onClick={() => addElement('image')}><ImageIcon size={18} /></motion.button>
-                    <motion.button whileTap={{ scale: 0.9 }} className={styles.toolBtn} onClick={() => addElement('barcode')}><Barcode size={18} /></motion.button>
-                </div>
                 <div className={styles.spacer} />
                 <div className={styles.zoomControls}>
                     <button onClick={() => setZoom(z => Math.max(0.2, z - 0.1))}>-</button>
@@ -64,13 +59,13 @@ const MainLayout = ({ children }) => {
             <div className={styles.mainContent}>
                 {/* Left Tools */}
                 <aside className={styles.sidebar}>
-                    <button className={styles.sidebarBtn} active="true"><MousePointer2 size={20} /></button>
-                    <button className={styles.sidebarBtn}><Square size={20} /></button>
-                    <button className={styles.sidebarBtn}><Type size={20} /></button>
-                    <button className={styles.sidebarBtn}><Barcode size={20} /></button>
-                    <button className={styles.sidebarBtn}><ImageIcon size={20} /></button>
+                    <button className={styles.sidebarBtn} active="true" title="Select"><MousePointer2 size={20} /></button>
+                    <button className={styles.sidebarBtn} title="Rectangle"><Square size={20} /></button>
+                    <button className={styles.sidebarBtn} title="Text" onClick={() => addElement('text')}><Type size={20} /></button>
+                    <button className={styles.sidebarBtn} title="Barcode" onClick={() => addElement('barcode')}><Barcode size={20} /></button>
+                    <button className={styles.sidebarBtn} title="Image" onClick={() => addElement('image')}><ImageIcon size={20} /></button>
                     <div className={styles.spacer} />
-                    <button className={styles.sidebarBtn}><Layers size={20} /></button>
+                    <button className={styles.sidebarBtn} title="Layers"><Layers size={20} /></button>
                 </aside>
 
                 {/* Workspace */}
