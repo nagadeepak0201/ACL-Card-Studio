@@ -49,7 +49,7 @@ const MainLayout = ({ children }) => {
             <div className={styles.toolbar}>
                 <div className={styles.toolGroup}>
                     <button className={styles.toolBtn} title="Save" onClick={saveDesign}><Save size={18} /></button>
-                    <button className={styles.toolBtn} title="Print" onClick={() => window.print()}><Printer size={18} /></button>
+                    <button className={styles.toolBtn} title="Print" onClick={printDesign}><Printer size={18} /></button>
                 </div>
                 <div className={styles.divider} />
                 <div className={styles.toolGroup}>
