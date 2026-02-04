@@ -13,7 +13,7 @@ import styles from './MainLayout.module.css';
 const MainLayout = ({ children }) => {
     const {
         addElement, zoom, setZoom, activeRecord, setActiveRecord,
-        records, saveDesign, printDesign, undo, redo, canUndo, canRedo
+        records, saveDesign, undo, redo, canUndo, canRedo
     } = useDesigner();
 
     // Removed local records definition as per instruction
@@ -49,7 +49,7 @@ const MainLayout = ({ children }) => {
             <div className={styles.toolbar}>
                 <div className={styles.toolGroup}>
                     <button className={styles.toolBtn} title="Save" onClick={saveDesign}><Save size={18} /></button>
-                    <button className={styles.toolBtn} title="Print" onClick={printDesign}><Printer size={18} /></button>
+                    <button className={styles.toolBtn} title="Print" onClick={() => {/*window.print()*/ }}><Printer size={18} /></button>
                 </div>
                 <div className={styles.divider} />
                 <div className={styles.toolGroup}>
@@ -135,20 +135,5 @@ const MainLayout = ({ children }) => {
         </div>
     );
 };
-
-// --- Add inside MainLayout component ---
-const [showPrintPreview, setShowPrintPreview] = useState(false);
-
-const handlePrintClick = () => {
-  setShowPrintPreview(true);
-};
-
-// ... Wherever the Print button/menu is rendered:
-// <button onClick={handlePrintClick}>Print</button>
-
-// Render logic:
-{showPrintPreview && (
-  <div className="print-preview-modal">{/* Print Preview Contents Here */}</div>
-)}
 
 export default MainLayout;
