@@ -128,7 +128,7 @@ const PropertiesPanel = () => {
                                 <input
                                     type="checkbox"
                                     checked={selectedElement.bold}
-                                    onChange={(e) => handleChange('bold', e.target.checked)}
+
                                 />
                                 Bold
                             </label>
