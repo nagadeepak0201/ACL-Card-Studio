@@ -153,9 +153,7 @@ export const DesignerProvider = ({ children }) => {
     alert('Design saved to console!');
   };
 
-  const printDesign = () => {
-    //window.print();
-  };
+  const printDesign = () => { /*window.print();*/ };
 
   return (
     <DesignerContext.Provider value={{
