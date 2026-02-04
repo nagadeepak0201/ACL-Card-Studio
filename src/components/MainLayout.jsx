@@ -136,4 +136,19 @@ const MainLayout = ({ children }) => {
     );
 };
 
+// --- Add inside MainLayout component ---
+const [showPrintPreview, setShowPrintPreview] = useState(false);
+
+const handlePrintClick = () => {
+  setShowPrintPreview(true);
+};
+
+// ... Wherever the Print button/menu is rendered:
+// <button onClick={handlePrintClick}>Print</button>
+
+// Render logic:
+{showPrintPreview && (
+  <div className="print-preview-modal">{/* Print Preview Contents Here */}</div>
+)}
+
 export default MainLayout;
