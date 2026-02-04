@@ -153,6 +153,10 @@ export const DesignerProvider = ({ children }) => {
     alert('Design saved to console!');
   };
 
+  const printDesign = () => {
+    //window.print();
+  };
+
   return (
     <DesignerContext.Provider value={{
       elements,
@@ -167,6 +171,7 @@ export const DesignerProvider = ({ children }) => {
       zoom,
       setZoom,
       saveDesign,
+      printDesign,
       undo,
       redo,
       canUndo: historyIndex > 0,
