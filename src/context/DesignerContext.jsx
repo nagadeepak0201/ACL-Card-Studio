@@ -154,7 +154,7 @@ export const DesignerProvider = ({ children }) => {
   };
 
   const printDesign = () => {
-    // window.print();
+    window.print();
   };
 
   return (
