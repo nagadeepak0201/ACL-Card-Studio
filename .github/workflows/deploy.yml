@@ -1,6 +1,8 @@
 name: Build and Deploy to IIS
 
 on:
+  push:
+    branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
     types: [ closed ]
@@ -8,7 +10,7 @@ on:
 
 jobs:
   deploy:
-    if: github.event.pull_request.merged == true || github.event_name == 'workflow_dispatch'
+    if: github.event_name == 'push' || github.event.pull_request.merged == true || github.event_name == 'workflow_dispatch'
     runs-on: self-hosted
 
     steps:
@@ -31,7 +33,7 @@ jobs:
         run: |
           # Define source and destination
           $sourcePath = "dist"
-          $destPath = "D:\Users\Cookies\Selvakumar\ACL_Studio" # Updated path
+          $destPath = "D:\Deployed Projects\Odyssey\ACL Card Studio"
 
           # Create directory if it doesn't exist
           if (-not (Test-Path $destPath)) {
